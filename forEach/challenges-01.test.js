@@ -73,7 +73,7 @@ const greeting = (word) => {
 
 const speaker = (message, callback) => {
   // Solution code here...
-  return greeting(message);
+  return callback(message);
 }
 
 // ------------------------------------------------------------------------------------------------
@@ -95,10 +95,12 @@ const speaker = (message, callback) => {
 
 const addValues = (arr, value) => {
   // Solution code here...
+  return arr.push(value);
 }
 
 const addNumbers = (num, arr, times, callback) => {
   // Solution code here...
+  
 }
 
 // ------------------------------------------------------------------------------------------------
