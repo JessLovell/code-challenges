@@ -32,10 +32,11 @@ const pushIntoSecond = (arr) => {
 
 const addBonusPoints = (arr) => {
   // Solution code here...
-  for (let i = 0; i < arr.length; i++){
-    arr[i] = arr[i] + 5;
+  const bonus = [];
+  for (let value of arr){
+    bonus.push(value + 5);
   }
-  return arr; 
+  return bonus; 
 }
 
 // ------------------------------------------------------------------------------------------------
@@ -67,6 +68,7 @@ const addCurve = (arr) => {
 
 const greeting = (word) => {
   // Solution code here...
+
 }
 
 const speaker = (message, callback) => {
