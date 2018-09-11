@@ -11,12 +11,11 @@
 
 const pushIntoSecond = (arr) => {
   const second = [];
+  
   // Solution code here...
-
   for (let i = 0; i < arr.length; i++){
     second.push(arr[i]);
   }
-
   return second;
 }
 
@@ -33,6 +32,10 @@ const pushIntoSecond = (arr) => {
 
 const addBonusPoints = (arr) => {
   // Solution code here...
+  for (let i = 0; i < arr.length; i++){
+    arr[i] = arr[i] + 5;
+  }
+  return arr; 
 }
 
 // ------------------------------------------------------------------------------------------------
@@ -195,11 +198,11 @@ describe('Testing challenge 1', () => {
   });
 });
 
-// describe('Testing challenge 2', () => {
-//   test('It should add five bonus points to each raw score', () => {
-//     expect(addBonusPoints([55, 79, 100, 85, 92])).toStrictEqual([ 60, 84, 105, 90, 97 ]);
-//   });
-// });
+describe('Testing challenge 2', () => {
+  test('It should add five bonus points to each raw score', () => {
+    expect(addBonusPoints([55, 79, 100, 85, 92])).toStrictEqual([ 60, 84, 105, 90, 97 ]);
+  });
+});
 
 // describe('Testing challenge 3', () => {
 //   test('It should increase each raw score by 5%', () => {
