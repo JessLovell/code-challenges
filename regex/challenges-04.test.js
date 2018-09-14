@@ -30,6 +30,7 @@ const isNum = (num) => {
 
 const isCapitalized = (string) => {
   // Solution code here...
+  return string.match(/[A-Z]\w+/g);
 };
 
 // ------------------------------------------------------------------------------------------------
@@ -41,6 +42,15 @@ const isCapitalized = (string) => {
 
 const citiesAtoJ = (cities) => {
   // Solution code here...
+
+//This code should be passing the test, but it is not. :(
+
+  let newArray = [];
+  cities.forEach( (element) => { 
+      if (element.match(/^[A-J]/) !== null) {
+          newArray.push(element);
+        }
+    })
 };
 
 // ------------------------------------------------------------------------------------------------
@@ -57,6 +67,7 @@ const citiesAtoJ = (cities) => {
 
 const matchMonth = (input) => {
   // Solution code here...
+
 };
 
 // ------------------------------------------------------------------------------------------------
@@ -120,19 +131,19 @@ const findShells = (phrase) => {
 //
 // ------------------------------------------------------------------------------------------------
 
-describe('Testing challenge 1', () => {
-  test('It should return true if the input is a number', () => {
-    expect(isNum(1234567890)).toBeTruthy();
-    expect(isNum('12345')).toBeTruthy();
-  });
-  test('It should return true if the input contains a number', () => {
-    expect(isNum('h3llo w0rld')).toBeTruthy();
-  });
-  test('It should return false if the input does not contain a number', () => {
-    expect(isNum('hello world')).toBeFalsy();
-    expect(isNum('')).toBeFalsy();
-  });
-});
+// describe('Testing challenge 1', () => {
+//   test('It should return true if the input is a number', () => {
+//     expect(isNum(1234567890)).toBeTruthy();
+//     expect(isNum('12345')).toBeTruthy();
+//   });
+//   test('It should return true if the input contains a number', () => {
+//     expect(isNum('h3llo w0rld')).toBeTruthy();
+//   });
+//   test('It should return false if the input does not contain a number', () => {
+//     expect(isNum('hello world')).toBeFalsy();
+//     expect(isNum('')).toBeFalsy();
+//   });
+// });
 
 // describe('Testing challenge 2', () => {
 //   test('It should only return words that begin with a capital letter', () => {
@@ -143,18 +154,18 @@ describe('Testing challenge 1', () => {
 //   });
 // });
 
-// describe('Testing challenge 3', () => {
-//   let cities = ['Cleveland', 'San Diego', 'Birmingham', 'Seattle', 'Miami', 'New York City', 'Omaha', 'Portland', 'Austin', 'Boston', 'Newport Beach', 'Hoboken'];
+describe('Testing challenge 3', () => {
+  let cities = ['Cleveland', 'San Diego', 'Birmingham', 'Seattle', 'Miami', 'New York City', 'Omaha', 'Portland', 'Austin', 'Boston', 'Newport Beach', 'Hoboken'];
 
-//   test('It should return the cities whose names begin with the letters A through J', () => {
-//     expect(citiesAtoJ(cities)).toContain('Cleveland', 'Birmingham', 'Austin', 'Boston', 'Hoboken');
-//     expect(citiesAtoJ(cities).length).toStrictEqual(5);
-//   });
+  test('It should return the cities whose names begin with the letters A through J', () => {
+    expect(citiesAtoJ(cities)).toContain('Cleveland', 'Birmingham', 'Austin', 'Boston', 'Hoboken');
+    expect(citiesAtoJ(cities).length).toStrictEqual(5);
+  });
 
-//   test('It should not return the cities whose names begin with the letters K through Z', () => {
-//     expect(citiesAtoJ(cities)).not.toContain('San Diego', 'Seattle', 'Miami', 'New York City', 'Omaha', 'Portland', 'Newport Beach');
-//   });
-// });
+  test('It should not return the cities whose names begin with the letters K through Z', () => {
+    expect(citiesAtoJ(cities)).not.toContain('San Diego', 'Seattle', 'Miami', 'New York City', 'Omaha', 'Portland', 'Newport Beach');
+  });
+});
 
 // describe('Testing challenge 4', () => {
 //   test('It should match any of the acceptable inputs', () => {
