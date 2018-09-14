@@ -42,15 +42,13 @@ const isCapitalized = (string) => {
 
 const citiesAtoJ = (cities) => {
   // Solution code here...
-
-//This code should be passing the test, but it is not. :(
-
   let newArray = [];
   cities.forEach( (element) => { 
       if (element.match(/^[A-J]/) !== null) {
-          newArray.push(element);
-        }
-    })
+        newArray.push(element);
+      }
+  })
+  return newArray;
 };
 
 // ------------------------------------------------------------------------------------------------
