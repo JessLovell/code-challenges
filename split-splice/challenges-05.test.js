@@ -157,6 +157,12 @@ For example:
 
 const removeEvenValues = (arr) => {
   // Solution code here...
+  for(let i = 0; i < arr.length; i++){
+    if (arr[i] % 2 === 0){
+      arr.splice(i, 1);
+      i = 0;
+    }
+  }
 };
 
 /*------------------------------------------------------------------------
@@ -259,18 +265,18 @@ describe('Testing challenge 6', () => {
   });
 });
 
-// describe('Testing challenge 7', () => {
-//   test('It should remove the even numbers from the array', () => {
-//     let list = [1, 2, 3, 4, 5, 6];
-//     removeEvenValues(list);
-//     expect(list).toStrictEqual([1, 3, 5]);
+describe('Testing challenge 7', () => {
+  test('It should remove the even numbers from the array', () => {
+    let list = [1, 2, 3, 4, 5, 6];
+    removeEvenValues(list);
+    expect(list).toStrictEqual([1, 3, 5]);
 
-//     list = [6, 3, 19, 43, 12, 66, 43];
-//     removeEvenValues(list);
-//     expect(list).toStrictEqual([3, 19, 43, 43]);
-//     expect(list.length).toStrictEqual(4);
-//   });
-// });
+    list = [6, 3, 19, 43, 12, 66, 43];
+    removeEvenValues(list);
+    expect(list).toStrictEqual([3, 19, 43, 43]);
+    expect(list.length).toStrictEqual(4);
+  });
+});
 
 // describe('Testing challenge 8', () => {
 //   test('It should shorten the string based on the first argument', () => {
