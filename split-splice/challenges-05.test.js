@@ -15,12 +15,10 @@ For example, if the input is 'Welcome', the output will be:
 
 const howMuchPencil = (str) => {
   let result = [];
-  
   for(let i = 0; i < str.length; i++){
     result[i] = str.slice(i);
   }
   result.push('');
-  
   return result;
 };
 
@@ -34,6 +32,7 @@ For example, wordsToCharList('gregor') returns ['g','r','e','g','o','r'].
 
 const wordsToCharList = (arr) => {
   // Solution code here...
+  return arr.split('');
 };
 
 /*------------------------------------------------------------------------
@@ -208,14 +207,14 @@ describe('Testing challenge 1', () => {
   });
 });
 
-// describe('Testing challenge 2', () => {
-//   test('It should return an array of individual letters', () => {
-//     expect(wordsToCharList('Gregor')).toStrictEqual(['G', 'r', 'e', 'g', 'o', 'r']);
-//     expect(wordsToCharList('Gregor').length).toStrictEqual(6);
-//     expect(wordsToCharList('hooray')).toStrictEqual(['h', 'o', 'o', 'r', 'a', 'y']);
-//     expect(wordsToCharList('')).toStrictEqual([]);
-//   });
-// });
+describe('Testing challenge 2', () => {
+  test('It should return an array of individual letters', () => {
+    expect(wordsToCharList('Gregor')).toStrictEqual(['G', 'r', 'e', 'g', 'o', 'r']);
+    expect(wordsToCharList('Gregor').length).toStrictEqual(6);
+    expect(wordsToCharList('hooray')).toStrictEqual(['h', 'o', 'o', 'r', 'a', 'y']);
+    expect(wordsToCharList('')).toStrictEqual([]);
+  });
+});
 
 // describe('Testing challenge 3', () => {
 //   test('It should add up the numbers contained within the string', () => {
