@@ -115,6 +115,9 @@ You may also use other array/string functions.
 const splitFoods = (recipe) => {
   let result = [];
   // Solution code here...
+  recipe.ingredients.forEach((element) => {
+    result.push(element.split(' ').slice(2, 6).join(' '));
+   })
   return result;
 }
 
@@ -133,6 +136,9 @@ Use the split method for this function.
 const stepActions = (recipe) => {
   let result = [];
   // Solution code here...
+  recipe.steps.forEach((element) => {
+    result.push(element.split(' ')[0]);
+   })
   return result;
 }
 
@@ -240,18 +246,18 @@ describe('Testing challenge 4', () => {
   });
 });
 
-// describe('Testing challenge 5', () => {
-//   test('It should return a list of foods', () => {
-//     expect(splitFoods(gruffaloCrumble)).toStrictEqual(['Gruffalo', 'oats', 'brown sugar', 'flour', 'pure maple syrup', 'chopped nuts', 'baking soda', 'baking powder', 'cinnamon', 'melted butter', 'fresh water']);
-//   });
-// });
+describe('Testing challenge 5', () => {
+  test('It should return a list of foods', () => {
+    expect(splitFoods(gruffaloCrumble)).toStrictEqual(['Gruffalo', 'oats', 'brown sugar', 'flour', 'pure maple syrup', 'chopped nuts', 'baking soda', 'baking powder', 'cinnamon', 'melted butter', 'fresh water']);
+  });
+});
 
-// describe('Testing challenge 6', () => {
-//   test('It should return a list of recipe steps', () => {
-//     expect(stepActions(gruffaloCrumble)).toStrictEqual(['Pre-heat', 'De-prickle', 'Sprinkle', 'Mix', 'Grease', 'Combine', 'Fold', 'Spread', 'Bake']);
-//     expect(stepActions(gruffaloCrumble).length).toStrictEqual(9);
-//   });
-// });
+describe('Testing challenge 6', () => {
+  test('It should return a list of recipe steps', () => {
+    expect(stepActions(gruffaloCrumble)).toStrictEqual(['Pre-heat', 'De-prickle', 'Sprinkle', 'Mix', 'Grease', 'Combine', 'Fold', 'Spread', 'Bake']);
+    expect(stepActions(gruffaloCrumble).length).toStrictEqual(9);
+  });
+});
 
 // describe('Testing challenge 7', () => {
 //   test('It should remove the even numbers from the array', () => {
