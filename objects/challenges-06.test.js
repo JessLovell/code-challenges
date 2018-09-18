@@ -101,8 +101,7 @@ hasChildrenValues(characters, 'Eddard') will return false
 
 const hasChildrenValues = (arr, character) => {
   // Solution code here...
-    let kids;
-
+  let kids;
   arr.forEach((element) => {
     if (element.name === character){
       if (Object.values(element.children).length > 0){
@@ -125,6 +124,18 @@ The input and output of this function are the same as the input and output from 
 
 const hasChildrenEntries = (arr, character) => {
   // Solution code here...
+  let kids;
+  arr.forEach((element) => {
+    if (element.name === character){
+      console.log(element.name);
+      if (Object.entries(element.children).length > 0) {
+        kids = true;
+      } else {
+        kids = false;
+      }
+    }
+  })
+  return kids;
 }
 
 /* ------------------------------------------------------------------------------------------------
@@ -207,15 +218,15 @@ describe('Testing challenge 4', () => {
   });
 });
 
-// describe('Testing challenge 5', () => {
-//   test('It should return true for characters that have children', () => {
-//     expect(hasChildrenEntries(characters, 'Eddard')).toBeTruthy();
-//   });
+describe('Testing challenge 5', () => {
+  test('It should return true for characters that have children', () => {
+    expect(hasChildrenEntries(characters, 'Eddard')).toBeTruthy();
+  });
 
-//   test('It should return false to characters who do not have children', () => {
-//     expect(hasChildrenEntries(characters, 'Jon')).toBeFalsy();
-//   });
-// });
+  test('It should return false to characters who do not have children', () => {
+    expect(hasChildrenEntries(characters, 'Jon')).toBeFalsy();
+  });
+});
 
 // describe('Testing challenge 6', () => {
 //   test('It should return an object for each house containing the name and size', () => {
