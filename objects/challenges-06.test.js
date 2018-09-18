@@ -127,7 +127,6 @@ const hasChildrenEntries = (arr, character) => {
   let kids;
   arr.forEach((element) => {
     if (element.name === character){
-      console.log(element.name);
       if (Object.entries(element.children).length > 0) {
         kids = true;
       } else {
@@ -151,21 +150,21 @@ For example: [{ house: 'Stark', members: 7 }, { house: 'Arryn', members: 3 }, ..
 const houseSize = (arr) => {
   const sizes = [];
   // Solution code here...
-    arr.forEach((element) => {
+  arr.forEach((element) => {
     if (element.spouse !== null) {
-        sizes.push(
+      sizes.push(
         {
-            house: element.house,
-            members: element.children.length + 2
+          house: element.house,
+          members: element.children.length + 2
         });
     } else {
         sizes.push(
         {
-            house: element.house,
-            members: element.children.length + 1
+          house: element.house,
+          members: element.children.length + 1
         });
     }
-    })
+  })
   return sizes;
 }
 
@@ -188,8 +187,20 @@ For example: [ { house: 'Stark', members: 6 }, { house: 'Arryn', members: 2 }, .
 const deceasedSpouses = ['Catelyn', 'Lysa', 'Robert', 'Khal Drogo', 'Alerie'];
 
 const houseSurvivors = (arr) => {
-  const survivors = [];
-  // Solution code here...
+    const survivors = [];
+    // Solution code here...
+    // In REPL, my test pass, but jest does not let me pass them.¯\_(ツ)_/¯
+    arr.forEach((element) => {
+      characters.forEach((family) => {
+        if (element === family.spouse){
+          family.spouse = null;
+        }
+      })  
+    })
+    
+    houseSize(characters).forEach((element) => {
+        survivors.push(element);
+    })
   return survivors;
 }
 
@@ -250,8 +261,8 @@ describe('Testing challenge 6', () => {
   });
 });
 
-// describe('Testing challenge 7', () => {
-//   test('It should not include any deceased spouses', () => {
-//     expect(houseSurvivors(characters)).toStrictEqual([ { house: 'Stark', members: 6 }, { house: 'Arryn', members: 2 }, { house: 'Lannister', members: 4 }, { house: 'Targaryen', members: 4 }, { house: 'Tyrell', members: 3 }, { house: 'Stark', members: 2 }, { house: 'Snow', members: 1 } ]);
-//   });
-// });
+describe('Testing challenge 7', () => {
+  test('It should not include any deceased spouses', () => {
+    expect(houseSurvivors(characters)).toStrictEqual([ { house: 'Stark', members: 6 }, { house: 'Arryn', members: 2 }, { house: 'Lannister', members: 4 }, { house: 'Targaryen', members: 4 }, { house: 'Tyrell', members: 3 }, { house: 'Stark', members: 2 }, { house: 'Snow', members: 1 } ]);
+  });
+});
