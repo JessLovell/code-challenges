@@ -83,6 +83,7 @@ Write a function named getHouses that returns a new array containing the names o
 const getHouses = (arr) => {
   let houses = [];
   // Solution code here...
+    arr.forEach((element, i) => houses.push(arr[i].house));
   return houses;
 }
 
@@ -100,6 +101,18 @@ hasChildrenValues(characters, 'Eddard') will return false
 
 const hasChildrenValues = (arr, character) => {
   // Solution code here...
+    let kids;
+
+  arr.forEach((element) => {
+    if (element.name === character){
+      if (Object.values(element.children).length > 0){
+        kids  = true;
+      } else {
+        kids = false;
+      }
+    }
+  })
+  return kids;
 }
 
 /* ------------------------------------------------------------------------------------------------
@@ -177,22 +190,22 @@ describe('Testing challenge 2', () => {
   });
 });
 
-// describe('Testing challenge 3', () => {
-//   test('something specific', () => {
-//     expect(getHouses(characters)).toStrictEqual([ 'Stark', 'Arryn', 'Lannister', 'Targaryen', 'Tyrell', 'Stark', 'Snow' ]);
-//     expect(getHouses(characters).length).toStrictEqual(7);
-//   });
-// });
+describe('Testing challenge 3', () => {
+  test('something specific', () => {
+    expect(getHouses(characters)).toStrictEqual([ 'Stark', 'Arryn', 'Lannister', 'Targaryen', 'Tyrell', 'Stark', 'Snow' ]);
+    expect(getHouses(characters).length).toStrictEqual(7);
+  });
+});
 
-// describe('Testing challenge 4', () => {
-//   test('It should return true for characters that have children', () => {
-//     expect(hasChildrenValues(characters, 'Daenarys')).toBeTruthy();
-//   });
+describe('Testing challenge 4', () => {
+  test('It should return true for characters that have children', () => {
+    expect(hasChildrenValues(characters, 'Daenarys')).toBeTruthy();
+  });
 
-//   test('It should return false to characters who do not have children', () => {
-//     expect(hasChildrenValues(characters, 'Sansa')).toBeFalsy();
-//   });
-// });
+  test('It should return false to characters who do not have children', () => {
+    expect(hasChildrenValues(characters, 'Sansa')).toBeFalsy();
+  });
+});
 
 // describe('Testing challenge 5', () => {
 //   test('It should return true for characters that have children', () => {
