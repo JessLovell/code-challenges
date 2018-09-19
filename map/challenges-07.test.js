@@ -42,6 +42,8 @@ Write a function named mapTwoToThe that produces the same output as your forLoop
 
 const mapTwoToThe = (input) => {
   // Solution code here...
+  const powerMap = input.map((element) => Math.pow(2, element));
+  return powerMap;
 }
 
 /* ------------------------------------------------------------------------------------------------
@@ -56,6 +58,8 @@ For example: charCode(['h','i']) returns [104, 105].
 
 const charCode = (input) => {
   // Solution code here...
+  const mapCode = input.map((element) => element.charCodeAt());
+  return mapCode;
 };
 
 /*------------------------------------------------------------------------------------------------
@@ -70,6 +74,16 @@ For example: evenOdd([1,2,3]) returns ['odd','even','odd'].
 
 const evenOdd = (input) => {
   // Solution code here...
+  const evenMap = input.map((element) => {
+    if (element % 2 === 0){
+        return 'even';
+      } else if (isNaN(element)){
+        return 'N/A';
+      } else {
+        return 'odd';
+      }
+  });
+  return evenMap;
 };
 
 /*------------------------------------------------------------------------------------------------
@@ -195,45 +209,45 @@ describe('Testing challenge 2', () => {
   });
 });
 
-// describe('Testing challenge 3', () => {
-//   test('It should return two raised to the power of the integer', () => {
-//     expect(mapTwoToThe([0, 4, 5])).toStrictEqual([1, 16, 32]);
-//     expect(mapTwoToThe([0, 4, 5]).length).toStrictEqual(3);
-//   });
+describe('Testing challenge 3', () => {
+  test('It should return two raised to the power of the integer', () => {
+    expect(mapTwoToThe([0, 4, 5])).toStrictEqual([1, 16, 32]);
+    expect(mapTwoToThe([0, 4, 5]).length).toStrictEqual(3);
+  });
 
-//   test('It should return decimals if the integer is negative', () => {
-//     expect(mapTwoToThe([-1, -2, -3])).toStrictEqual([0.5, 0.25, 0.125]);
-//   });
-// });
+  test('It should return decimals if the integer is negative', () => {
+    expect(mapTwoToThe([-1, -2, -3])).toStrictEqual([0.5, 0.25, 0.125]);
+  });
+});
 
-// describe('Testing challenge 4', () => {
-//   test('It should return an array containing the character code for each letter', () => {
-//     expect(charCode(['C', 'o', 'd', 'e', '3', '0', '1'])).toStrictEqual([ 67, 111, 100, 101, 51, 48, 49 ]);
-//     expect(charCode(['C', 'o', 'd', 'e', '3', '0', '1']).length).toStrictEqual(7);
-//   });
-// });
+describe('Testing challenge 4', () => {
+  test('It should return an array containing the character code for each letter', () => {
+    expect(charCode(['C', 'o', 'd', 'e', '3', '0', '1'])).toStrictEqual([ 67, 111, 100, 101, 51, 48, 49 ]);
+    expect(charCode(['C', 'o', 'd', 'e', '3', '0', '1']).length).toStrictEqual(7);
+  });
+});
 
-// describe('Testing challenge 5', () => {
-//   test('It should return an array containing the keys from an object', () => {
-//     expect(evenOdd([5, 8, 2, 6, 9, 13, 542, 541])).toStrictEqual([ 'odd', 'even', 'even', 'even', 'odd', 'odd', 'even', 'odd' ]);
-//     expect(evenOdd([5, 8, 2, 6, 9, 13, 542, 541]).length).toStrictEqual(8);
-//   });
+describe('Testing challenge 5', () => {
+  test('It should return an array containing the keys from an object', () => {
+    expect(evenOdd([5, 8, 2, 6, 9, 13, 542, 541])).toStrictEqual([ 'odd', 'even', 'even', 'even', 'odd', 'odd', 'even', 'odd' ]);
+    expect(evenOdd([5, 8, 2, 6, 9, 13, 542, 541]).length).toStrictEqual(8);
+  });
 
-//   test('It should work with all odd numbers', () => {
-//     expect(evenOdd([1, 3, 5, 7, 9])).toStrictEqual([ 'odd', 'odd', 'odd', 'odd', 'odd' ]);
-//     expect(evenOdd([1, 3, 5, 7, 9]).length).toStrictEqual(5);
-//   });
+  test('It should work with all odd numbers', () => {
+    expect(evenOdd([1, 3, 5, 7, 9])).toStrictEqual([ 'odd', 'odd', 'odd', 'odd', 'odd' ]);
+    expect(evenOdd([1, 3, 5, 7, 9]).length).toStrictEqual(5);
+  });
 
-//   test('It should work with all even numbers', () => {
-//     expect(evenOdd([2, 4, 6, 8, 10])).toStrictEqual([ 'even', 'even', 'even', 'even', 'even' ]);
-//     expect(evenOdd([2, 4, 6, 8, 10]).length).toStrictEqual(5);
-//   });
+  test('It should work with all even numbers', () => {
+    expect(evenOdd([2, 4, 6, 8, 10])).toStrictEqual([ 'even', 'even', 'even', 'even', 'even' ]);
+    expect(evenOdd([2, 4, 6, 8, 10]).length).toStrictEqual(5);
+  });
 
-//   test('It should return the string "N/A" if a non-number is included in the array', () => {
-//     expect(evenOdd([5, 8, 2, 'hi'])).toStrictEqual([ 'odd', 'even', 'even', 'N/A' ]);
-//     expect(evenOdd([5, 8, 2, 'hi']).length).toStrictEqual(4);
-//   });
-// });
+  test('It should return the string "N/A" if a non-number is included in the array', () => {
+    expect(evenOdd([5, 8, 2, 'hi'])).toStrictEqual([ 'odd', 'even', 'even', 'N/A' ]);
+    expect(evenOdd([5, 8, 2, 'hi']).length).toStrictEqual(4);
+  });
+});
 
 // describe('Testing challenge 6', () => {
 //   test('It should return an array containing only the ability names', () => {
