@@ -152,6 +152,7 @@ const characters = [
 
 const getCharactersWithoutChildren = (input) => {
   // Solution code here...
+  return input.filter(element => element.children === undefined);
 };
 
 /* ------------------------------------------------------------------------------------------------
@@ -255,12 +256,12 @@ describe('Testing challenge 5', () => {
   });
 });
 
-// describe('Testing challenge 6', () => {
-//   test('It should return an array containing characters who do not have children', () => {
-//     expect(getCharactersWithoutChildren(characters)).toStrictEqual([ { name: 'Sansa', spouse: 'Tyrion', house: 'Stark' }, { name: 'Jon', spouse: null, house: 'Snow' } ]);
-//     expect(getCharactersWithoutChildren(characters).length).toStrictEqual(2);
-//   });
-// });
+describe('Testing challenge 6', () => {
+  test('It should return an array containing characters who do not have children', () => {
+    expect(getCharactersWithoutChildren(characters)).toStrictEqual([ { name: 'Sansa', spouse: 'Tyrion', house: 'Stark' }, { name: 'Jon', spouse: null, house: 'Snow' } ]);
+    expect(getCharactersWithoutChildren(characters).length).toStrictEqual(2);
+  });
+});
 
 // describe('Testing challenge 7', () => {
 //   test('It should remove non-integers and return "even" or "odd', () => {
