@@ -10,6 +10,7 @@ For example, oddValues([1,2,3]) returns [1,3].
 
 const oddValues = (input) => {
   // Solution code here...
+  return input.filter(value => value % 2 === 1);
 };
 
 /* ------------------------------------------------------------------------------------------------
@@ -25,6 +26,7 @@ For example, filterStringsWithVowels('gregor','hound','xyz') returns ['gregor', 
 
 const filterStringsWithVowels = (input) => {
   // Solution code here...
+  return input.filter(value => value.match(/[aeiou]/g));
 };
 
 
@@ -38,6 +40,7 @@ For example, notInFirstArray([1,2,3], [1,2,3,4]) returns [4].
 
 const notInFirstArray = (forbiddenValues, input) => {
   // Solution code here...
+  return input.filter(value => forbiddenValues.indexOf(value) === -1);
 };
 
 /* ------------------------------------------------------------------------------------------------
@@ -81,6 +84,7 @@ const snorlaxData = {
 
 const getBaseStatGreaterThan = (input, minBaseStat) => {
   // Solution code here...
+  input.filter(element => element.baseStat > 50);
 };
 
 /*------------------------------------------------------------------------------------------------
@@ -180,74 +184,74 @@ describe('Testing challenge 1', () => {
   });
 });
 
-// describe('Testing challenge 2', () => {
-//   test('It should return an array containing only words that have vowels', () => {
-//     expect(filterStringsWithVowels(['gregor','hound','xyz'])).toStrictEqual(['gregor', 'hound']);
-//     expect(filterStringsWithVowels(['gregor','hound','xyz']).length).toStrictEqual(2);
-//     expect(filterStringsWithVowels(['a', 'b', 'cdefg'])).toStrictEqual(['a', 'cdefg']);
-//     expect(filterStringsWithVowels(['a', 'b', 'c', 'd', 'e', 'f', 'g', 'h', 'i', 'j', 'k', 'l', 'm', 'n', 'o', 'p', 'q', 'r', 's', 't', 'u', 'v', 'w', 'x', 'y', 'z', ''])).toStrictEqual(['a', 'e', 'i', 'o', 'u']);
-//   });
+describe('Testing challenge 2', () => {
+  test('It should return an array containing only words that have vowels', () => {
+    expect(filterStringsWithVowels(['gregor','hound','xyz'])).toStrictEqual(['gregor', 'hound']);
+    expect(filterStringsWithVowels(['gregor','hound','xyz']).length).toStrictEqual(2);
+    expect(filterStringsWithVowels(['a', 'b', 'cdefg'])).toStrictEqual(['a', 'cdefg']);
+    expect(filterStringsWithVowels(['a', 'b', 'c', 'd', 'e', 'f', 'g', 'h', 'i', 'j', 'k', 'l', 'm', 'n', 'o', 'p', 'q', 'r', 's', 't', 'u', 'v', 'w', 'x', 'y', 'z', ''])).toStrictEqual(['a', 'e', 'i', 'o', 'u']);
+  });
 
-//   test('It should not contain any words that do not contain vowels', () => {
-//     expect(filterStringsWithVowels(['gregor','hound','xyz'])).not.toContain('xyz');
-//   })
-// });
+  test('It should not contain any words that do not contain vowels', () => {
+    expect(filterStringsWithVowels(['gregor','hound','xyz'])).not.toContain('xyz');
+  })
+});
 
-// describe('Testing challenge 3', () => {
-//   const firstNums = [1, 2, 3];
-//   const secondNums = [1, 2, 3, 4];
+describe('Testing challenge 3', () => {
+  const firstNums = [1, 2, 3];
+  const secondNums = [1, 2, 3, 4];
 
-//   const firstStrings = ['Demi', 'Gregor', 'Hound'];
-//   const secondStrings = ['Gary', 'Charlotte', 'Demi', 'Gregor', 'Hound'];
+  const firstStrings = ['Demi', 'Gregor', 'Hound'];
+  const secondStrings = ['Gary', 'Charlotte', 'Demi', 'Gregor', 'Hound'];
 
-//   test('It should return an array that includes any elements not in the first array', () => {
-//     expect(notInFirstArray(firstNums, secondNums)).toStrictEqual([4]);
-//     expect(notInFirstArray(firstNums, secondNums).length).toStrictEqual(1);
-//   });
+  test('It should return an array that includes any elements not in the first array', () => {
+    expect(notInFirstArray(firstNums, secondNums)).toStrictEqual([4]);
+    expect(notInFirstArray(firstNums, secondNums).length).toStrictEqual(1);
+  });
 
-//   test('It should also work with an array of strings', () => {
-//     expect(notInFirstArray(firstStrings, secondStrings)).toStrictEqual(['Gary', 'Charlotte']);
-//     expect(notInFirstArray(firstStrings, secondStrings).length).toStrictEqual(2);
-//   });
+  test('It should also work with an array of strings', () => {
+    expect(notInFirstArray(firstStrings, secondStrings)).toStrictEqual(['Gary', 'Charlotte']);
+    expect(notInFirstArray(firstStrings, secondStrings).length).toStrictEqual(2);
+  });
 
-//   test('It should work with empty arrays', () => {
-//     expect(notInFirstArray([], [])).toStrictEqual([]);
-//     expect(notInFirstArray([], [1,2,3,4,5])).toStrictEqual([1,2,3,4,5]);
-//     expect(notInFirstArray([1,2,3,4,5], [])).toStrictEqual([]);
-//   });
-// });
+  test('It should work with empty arrays', () => {
+    expect(notInFirstArray([], [])).toStrictEqual([]);
+    expect(notInFirstArray([], [1,2,3,4,5])).toStrictEqual([1,2,3,4,5]);
+    expect(notInFirstArray([1,2,3,4,5], [])).toStrictEqual([]);
+  });
+});
 
-// describe('Testing challenge 4', () => {
-//   test('It should return an array containing the stats that are greater than the input', () => {
-//     expect(getBaseStatGreaterThan(snorlaxData.stats, 75)).toStrictEqual([ { stat: { url: 'https://pokeapi.co/api/v2/stat/5/', name: 'special-defense' }, effort: 2, baseStat: 110 } ]);
-//     expect(getBaseStatGreaterThan(snorlaxData.stats, 75).length).toStrictEqual(1);
-//     expect(getBaseStatGreaterThan(snorlaxData.stats, 110)).toStrictEqual([]);
-//   });
-//   test('It should work for non-Snorlax data', () => {
-//     expect(getBaseStatGreaterThan([{baseStat: 10}, {baseStat: -85}, {baseStat: 0}, {baseStat: -50}], -60)).toStrictEqual([{baseStat: 10}, {baseStat: 0}, {baseStat: -50}]);
-//   });
-// });
+describe('Testing challenge 4', () => {
+  test('It should return an array containing the stats that are greater than the input', () => {
+    expect(getBaseStatGreaterThan(snorlaxData.stats, 75)).toStrictEqual([ { stat: { url: 'https://pokeapi.co/api/v2/stat/5/', name: 'special-defense' }, effort: 2, baseStat: 110 } ]);
+    expect(getBaseStatGreaterThan(snorlaxData.stats, 75).length).toStrictEqual(1);
+    expect(getBaseStatGreaterThan(snorlaxData.stats, 110)).toStrictEqual([]);
+  });
+  test('It should work for non-Snorlax data', () => {
+    expect(getBaseStatGreaterThan([{baseStat: 10}, {baseStat: -85}, {baseStat: 0}, {baseStat: -50}], -60)).toStrictEqual([{baseStat: 10}, {baseStat: 0}, {baseStat: -50}]);
+  });
+});
 
-// describe('Testing challenge 5', () => {
-//   test('It should return the name of the stats that exceed that maximum', () => {
-//     expect(getStatName(snorlaxData.stats, 50)).toStrictEqual([ 'special-defense', 'special-attack' ]);
-//     expect(getStatName(snorlaxData.stats, 50).length).toStrictEqual(2);
-//   });
+describe('Testing challenge 5', () => {
+  test('It should return the name of the stats that exceed that maximum', () => {
+    expect(getStatName(snorlaxData.stats, 50)).toStrictEqual([ 'special-defense', 'special-attack' ]);
+    expect(getStatName(snorlaxData.stats, 50).length).toStrictEqual(2);
+  });
 
-//   test('It should return the name of the stats that exceed that maximum', () => {
-//     expect(getStatName(snorlaxData.stats, 120)).toStrictEqual([]);
-//     expect(getStatName(snorlaxData.stats, 120).length).toStrictEqual(0);
-//   });
+  test('It should return the name of the stats that exceed that maximum', () => {
+    expect(getStatName(snorlaxData.stats, 120)).toStrictEqual([]);
+    expect(getStatName(snorlaxData.stats, 120).length).toStrictEqual(0);
+  });
 
-//   test('It should work for non-snorlax data', () => {
-//     expect(getStatName([
-//       {baseStat: 10, stat: {name: 'one'}},
-//       {baseStat: -85, stat: {name: 'two'}},
-//       {baseStat: 0, stat: {name: 'three'}},
-//       {baseStat: -50, stat: {name: 'four'}}
-//     ], -60)).toStrictEqual(['one', 'three', 'four']);
-//   });
-// });
+  test('It should work for non-snorlax data', () => {
+    expect(getStatName([
+      {baseStat: 10, stat: {name: 'one'}},
+      {baseStat: -85, stat: {name: 'two'}},
+      {baseStat: 0, stat: {name: 'three'}},
+      {baseStat: -50, stat: {name: 'four'}}
+    ], -60)).toStrictEqual(['one', 'three', 'four']);
+  });
+});
 
 // describe('Testing challenge 6', () => {
 //   test('It should return an array containing characters who do not have children', () => {
