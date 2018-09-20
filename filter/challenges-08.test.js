@@ -97,8 +97,7 @@ For example, getStatName(snorlaxData.stats, 50) will return ['special-defense', 
 
 const getStatName = (input, minBaseStat) => {
   // Solution code here...
-  const arr = getBaseStatGreaterThan(input, minBaseStat);
-  return arr.map(element => element.stat.name);
+  return getBaseStatGreaterThan(input, minBaseStat).map(element => element.stat.name);
 };
 
 /* ------------------------------------------------------------------------------------------------
@@ -165,6 +164,15 @@ For example: evenOddNumericValues(['Gregor', 2, 4, 1]) returns ['even', 'even', 
 
 const evenOddNumericValues = (input) => {
   // Solution code here...
+  const arr = input.filter(element => typeof element === 'number');
+  const mapped = arr.map(element => {
+      if (element % 2 === 0){
+        return 'even';
+      } else {
+          return 'odd';
+      }
+  })
+  return mapped; 
 };
 
 /* ------------------------------------------------------------------------------------------------
@@ -263,13 +271,13 @@ describe('Testing challenge 6', () => {
   });
 });
 
-// describe('Testing challenge 7', () => {
-//   test('It should remove non-integers and return "even" or "odd', () => {
-//     expect(evenOddNumericValues(['Gregor', 2, 4, 1])).toStrictEqual(['even', 'even', 'odd']);
-//     expect(evenOddNumericValues(['Gregor', 2, 4, 1]).length).toStrictEqual(3);
-//     expect(evenOddNumericValues(['a', 'b', 'c'])).toStrictEqual([]);
-//   });
-//   test('It should not accept strings that look like numbers', () => {
-//     expect(evenOddNumericValues(['1', 2, 3, '4', 5,'6'])).toStrictEqual(['even', 'odd', 'odd']);
-//   });
-// });
+describe('Testing challenge 7', () => {
+  test('It should remove non-integers and return "even" or "odd', () => {
+    expect(evenOddNumericValues(['Gregor', 2, 4, 1])).toStrictEqual(['even', 'even', 'odd']);
+    expect(evenOddNumericValues(['Gregor', 2, 4, 1]).length).toStrictEqual(3);
+    expect(evenOddNumericValues(['a', 'b', 'c'])).toStrictEqual([]);
+  });
+  test('It should not accept strings that look like numbers', () => {
+    expect(evenOddNumericValues(['1', 2, 3, '4', 5,'6'])).toStrictEqual(['even', 'odd', 'odd']);
+  });
+});
