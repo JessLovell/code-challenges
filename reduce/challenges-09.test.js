@@ -114,6 +114,11 @@ const snorlaxData = {
 
 const extractStat = (statName, input) => {
   // Solution code here...
+  input.reduce((acc, val) => {
+    if (val.stat.name !== statName){
+      return acc = val;
+    } 
+}, {});
 };
 
 /*------------------------------------------------------------------------------------------------
@@ -124,6 +129,7 @@ Write a function that, given an array of numbers as input, uses ONE call to filt
 
 const calculateAverage = (input) => {
   // Solution code here...
+  return input.reduce((acc, val) => acc + val) / input.length;
 };
 
 /*------------------------------------------------------------------------------------------------
@@ -261,11 +267,11 @@ describe('Testing challenge 2', () => {
 //   });
 // });
 
-// describe('Testing challenge 4', () => {
-//   test('It should return the average of the numbers in the array', () => {
-//     expect(calculateAverage([18, 290, 37, 4, 55, 16, 7, 85 ])).toStrictEqual(64);
-//   });
-// });
+describe('Testing challenge 4', () => {
+  test('It should return the average of the numbers in the array', () => {
+    expect(calculateAverage([18, 290, 37, 4, 55, 16, 7, 85 ])).toStrictEqual(64);
+  });
+});
 
 // describe('Testing challenge 5', () => {
 //   test('It should return an array containing the names of the children', () => {
