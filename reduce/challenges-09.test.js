@@ -10,6 +10,7 @@ Note: You may not use the array's built-in length property.
 
 const countNumberOfElements = (input) => {
   // Solution code here...
+  return input.reduce((acc, val) => acc + 1);
 };
 
 /*------------------------------------------------------------------------------------------------
@@ -63,6 +64,13 @@ const characters = [
 
 const countNumberOfChildren = (input) => {
   // Solution code here...
+  return input.reduce((acc, val) => {
+    if (val.children !== undefined){
+     return acc + val.children.length;
+    } else {
+      return acc;
+    }
+  }, 0);
 };
 
 /*------------------------------------------------------------------------------------------------
@@ -241,11 +249,11 @@ describe('Testing challenge 1', () => {
   });
 });
 
-// describe('Testing challenge 2', () => {
-//   test('It should return the total number of children', () => {
-//     expect(countNumberOfChildren(characters)).toStrictEqual(14);
-//   });
-// });
+describe('Testing challenge 2', () => {
+  test('It should return the total number of children', () => {
+    expect(countNumberOfChildren(characters)).toStrictEqual(14);
+  });
+});
 
 // describe('Testing challenge 3', () => {
 //   test('It should return any stats that match the input', () => {
