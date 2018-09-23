@@ -144,6 +144,13 @@ Write a function named extractChildren that, given the array of characters from 
 
 const extractChildren = input => {
   // Solution code here...
+  const aMatch = input.filter(element => element.name.match(/a/));
+  return aMatch.reduce((acc, val, idx) => {
+      if (val.children !== undefined){
+        val.children.forEach(element => acc.push(element));
+      }
+      return acc;
+  }, []);
 };
 
 /*------------------------------------------------------------------------------------------------
@@ -273,18 +280,18 @@ describe('Testing challenge 4', () => {
   });
 });
 
-// describe('Testing challenge 5', () => {
-//   test('It should return an array containing the names of the children', () => {
-//     expect(extractChildren(characters)).toStrictEqual([ 'Robb', 'Sansa', 'Arya', 'Bran', 'Rickon', 'Drogon', 'Rhaegal', 'Viserion', 'Margaery', 'Loras' ]);
-//     expect(extractChildren(characters).length).toStrictEqual(10);
-//   });
-// });
+describe('Testing challenge 5', () => {
+  test('It should return an array containing the names of the children', () => {
+    expect(extractChildren(characters)).toStrictEqual([ 'Robb', 'Sansa', 'Arya', 'Bran', 'Rickon', 'Drogon', 'Rhaegal', 'Viserion', 'Margaery', 'Loras' ]);
+    expect(extractChildren(characters).length).toStrictEqual(10);
+  });
+});
 
-// describe('Testing challenge 6', () => {
-//   test('It should return the string with the characters in reverse order', () => {
-//     expect(reversedString('Code 301')).toStrictEqual('103 edoC');
-//   });
-// });
+describe('Testing challenge 6', () => {
+  test('It should return the string with the characters in reverse order', () => {
+    expect(reversedString('Code 301')).toStrictEqual('103 edoC');
+  });
+});
 
 // describe('Testing challenge 7', () => {
 //   test('It should return a count of the prime numbers in the array', () => {
