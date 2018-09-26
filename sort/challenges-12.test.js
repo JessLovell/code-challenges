@@ -34,7 +34,7 @@ Write a function named sortByLength that takes in an array of strings and return
 
 const sortByLength = (strings) => {
   // Solution code here...
-  return strings.sort(element => element.length);
+  return strings.sort((a, b) => a.length - b.length);
 };
 
 /*------------------------------------------------------------------------------------------------
@@ -192,14 +192,14 @@ describe('Testing challenge 3', () => {
   });
 });
 
-// describe('Testing challenge 4', () => {
-//   test('It should alphabetize without regard to capitalization', () => {
-//     expect(alphabetizeBetter(['Alice', 'apple', 'alert', 'Average'])).toStrictEqual([ 'alert', 'Alice', 'apple', 'Average' ]);
-//     const ans = alphabetizeBetter(['alphabet', 'Zebra', 'Alphabet', 'carrot']);
-//     expect(ans.slice(0,2)).toEqual(expect.arrayContaining([ 'Alphabet','alphabet']));
-//     expect(ans.slice(2)).toStrictEqual(['carrot', 'Zebra']);
-//   });
-// });
+describe('Testing challenge 4', () => {
+  test('It should alphabetize without regard to capitalization', () => {
+    expect(alphabetizeBetter(['Alice', 'apple', 'alert', 'Average'])).toStrictEqual([ 'alert', 'Alice', 'apple', 'Average' ]);
+    const ans = alphabetizeBetter(['alphabet', 'Zebra', 'Alphabet', 'carrot']);
+    expect(ans.slice(0,2)).toEqual(expect.arrayContaining([ 'Alphabet','alphabet']));
+    expect(ans.slice(2)).toStrictEqual(['carrot', 'Zebra']);
+  });
+});
 
 // describe('Testing challenge 5', () => {
 //   test('It should sort items by their price', () => {
