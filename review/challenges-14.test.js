@@ -105,6 +105,11 @@ Which could be sorted by name or price.
 
 const sortBy = (property, objs) => {
   // Solution code here...
+  if (property === 'name') {
+    return objs.sort((a,b) => a.name.charCodeAt(0) - b.name.charCodeAt(0));
+  } else {
+    return objs.sort((a,b) => a.price - b.price);
+  }
 };
 
 // ------------------------------------------------------------------------------------------------
@@ -174,51 +179,51 @@ describe('Testing challenge 2', () => {
   });
 });
 
-// describe('Testing challenge 3', () => {
-//   test('It should sort items by a price', () => {
+describe('Testing challenge 3', () => {
+  test('It should sort items by a price', () => {
 
-//     expect(sortBy('price', [
-//       {name: 'Sweatshirt', price: 45},
-//       {name: 'Bookmark', price: 2.50},
-//       {name: 'Tote bag', price: 15}
-//     ])).toStrictEqual([
-//       {name: 'Bookmark', price: 2.50},
-//       {name: 'Tote bag', price: 15},
-//       {name: 'Sweatshirt', price: 45},
-//     ]);
+    expect(sortBy('price', [
+      {name: 'Sweatshirt', price: 45},
+      {name: 'Bookmark', price: 2.50},
+      {name: 'Tote bag', price: 15}
+    ])).toStrictEqual([
+      {name: 'Bookmark', price: 2.50},
+      {name: 'Tote bag', price: 15},
+      {name: 'Sweatshirt', price: 45},
+    ]);
     
-//   });
+  });
 
-//   test('It should sort items by name', () => {
+  test('It should sort items by name', () => {
     
-//     expect(sortBy('name', [
-//       {name: 'Sweatshirt', price: 45},
-//       {name: 'Bookmark', price: 2.50},
-//       {name: 'Tote bag', price: 15}
-//     ])).toStrictEqual([
-//       {name: 'Bookmark', price: 2.50},
-//       {name: 'Sweatshirt', price: 45},
-//       {name: 'Tote bag', price: 15},
-//     ]);
+    expect(sortBy('name', [
+      {name: 'Sweatshirt', price: 45},
+      {name: 'Bookmark', price: 2.50},
+      {name: 'Tote bag', price: 15}
+    ])).toStrictEqual([
+      {name: 'Bookmark', price: 2.50},
+      {name: 'Sweatshirt', price: 45},
+      {name: 'Tote bag', price: 15},
+    ]);
     
-//   });
+  });
 
-// });
+});
 
-// describe('Testing challenge 4', () => {
-//   test('It should return true if there are three in a row', () => {
-//     expect(detectTicTacToeWin([['X', '', 'O'], ['X', 'O', ''], ['X', 'O', 'X']])).toStrictEqual(true);
-//     expect(detectTicTacToeWin([['O', '', 'X'], ['X', 'O', 'X'], ['X', '', 'O']])).toStrictEqual(true);
-//   });
+describe('Testing challenge 4', () => {
+  test('It should return true if there are three in a row', () => {
+    expect(detectTicTacToeWin([['X', '', 'O'], ['X', 'O', ''], ['X', 'O', 'X']])).toStrictEqual(true);
+    expect(detectTicTacToeWin([['O', '', 'X'], ['X', 'O', 'X'], ['X', '', 'O']])).toStrictEqual(true);
+  });
 
-//   test('It should return false if there are not three in a row', () => {
-//     expect(detectTicTacToeWin([['X', '', 'O'], ['O', 'O', ''], ['X', 'O', 'X']])).toStrictEqual(false);
-//   });
+  test('It should return false if there are not three in a row', () => {
+    expect(detectTicTacToeWin([['X', '', 'O'], ['O', 'O', ''], ['X', 'O', 'X']])).toStrictEqual(false);
+  });
 
-//   test('It should not treat empty 3 in row as winner', () => {
-//     expect(detectTicTacToeWin([['', '', ''], ['O', 'O', ''], ['X', 'O', 'X']])).toEqual(false);
-//   });
-// });
+  test('It should not treat empty 3 in row as winner', () => {
+    expect(detectTicTacToeWin([['', '', ''], ['O', 'O', ''], ['X', 'O', 'X']])).toEqual(false);
+  });
+});
 
 // describe('Testing challenge 5', () => {
 //   test('It should check if url is https', () => {
